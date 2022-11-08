@@ -1,6 +1,7 @@
 
 export enum UsersAtionTypes {
     GET_ALL_USERS = "ts-react-app/users/GET_ALL_USERS",
+    GET_USER = "ts-react-app/users/GET_USER",
     GET_USER_ERROR = "ts-react-app/users/GET_USER_ERROR",
 }
 

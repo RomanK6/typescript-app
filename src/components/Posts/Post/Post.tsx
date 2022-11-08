@@ -8,6 +8,7 @@ interface IPropsPost {
         title: string,
         body: string,
     };
+    username?: string;
 }
 
 const Post: React.FC<IPropsPost> = (props) => { 
@@ -17,7 +18,7 @@ const Post: React.FC<IPropsPost> = (props) => {
     return <div className={styles.wrapper}>
        <h3>{props.post.title}</h3>
        <p>{props.post.body}</p>
-       <p className={styles.author}>Author: {props.post.userId}</p>
+       <p className={styles.author}>Author: {props.username}</p>
     </div>
     }
 

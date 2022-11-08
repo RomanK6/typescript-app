@@ -7,16 +7,26 @@ import { IUser } from "../../types/user-types";
 
 interface IPropsPosts {
     posts?: Array<IPosts>;
-    users?: Array<IUser>;
+    users: Array<IUser>;
 }
 
 const Posts: React.FC<IPropsPosts> = (props) => { 
-    const posts = !!props.posts && props.posts.map(post => <Post key={post.id} post={post} />)
+    
+    if (props.users.length > 0) {
+        const posts = !!props.posts && props.posts.map(post => 
+        <Post 
+        key={post.id} 
+        post={post} 
+        username={props.users[post.userId - 1].username}
+        />)
+        return <div className={styles.wrapper}>
+            <h2>Posts:</h2>
+            {!!props.posts ? posts : "loading..."}
+        </div>
+    }
+    return <div>loading...</div>
                                                             
-    return <div className={styles.wrapper}>
-        <h2>Posts:</h2>
-        {!!props.posts ? posts : "loading..."}
-    </div>
+    
     }
 
 export default Posts;
