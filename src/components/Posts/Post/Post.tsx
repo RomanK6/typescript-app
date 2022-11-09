@@ -8,7 +8,7 @@ interface IPropsPost {
         title: string,
         body: string,
     };
-    username?: string;
+    username: string;
 }
 
 const Post: React.FC<IPropsPost> = (props) => { 

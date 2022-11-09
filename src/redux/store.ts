@@ -1,11 +1,13 @@
 import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import postsReducer from './posts-reducer';
+import profileReducer from './profile-reduser';
 import usersReducer from './user-reduser';
 
 let reducers = combineReducers({
     posts: postsReducer,
     users: usersReducer,
+    profile: profileReducer,
 })
 //=====================
 export type redusersType = ReturnType<typeof reducers>

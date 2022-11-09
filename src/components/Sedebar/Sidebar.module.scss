@@ -3,9 +3,12 @@
     border-radius: 8px;
     color: #5ed9ff;
     padding: 20px 0;
+    display: flex;
+    flex-direction: column;
 
     .link {
         color: #5ed9ff;
         text-decoration: none;
+        margin: 5px 0;
     }
 }

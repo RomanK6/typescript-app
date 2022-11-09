@@ -8,6 +8,8 @@ import Header from './components/Header/Header';
 import Login from './components/Login/Login';
 import Sidebar from './components/Sedebar/Sidebar';
 import PostsContainer from './components/Posts/PostsContainer';
+import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='' element={<PostsContainer />} />
             <Route path='/posts' element={<PostsContainer />} />
+            <Route path='/users' element={<UsersContainer />} />
+            <Route path='/profile/:userId' element={<ProfileContainer/>}/>
           </Routes>
         </div>
       </Provider>
