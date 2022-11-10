@@ -5,13 +5,17 @@ import Profile from './Profile';
 import { getUserProfile } from './../../redux/profile-reduser';
 import { useParams } from "react-router-dom";
 import { IUser } from "../../types/user-types";
+import { getPostsOneUser } from './../../redux/posts-reducer';
+import { IPostsState } from './../../types/post-types';
 
 
 interface IProfilePropsContainer {
     getUserProfile: (userId?: string) => {};
+    getPostsOneUser: (userId?: string) => {};
     profile: {
-        profile: object;
+        profile: IUser;
     }
+    posts: IPostsState;
 }
 
 const ProfileContainer: React.FC<IProfilePropsContainer> = (props) => {
@@ -19,15 +23,17 @@ const ProfileContainer: React.FC<IProfilePropsContainer> = (props) => {
     useEffect(
         () => {
             props.getUserProfile(userId)
+            props.getPostsOneUser(userId)
         }, []
     )
-    return <Profile profile={props.profile.profile} />
+    return <Profile profile={props.profile.profile} posts={props.posts}/>
 }
 
 const mapStateToProps = (state: redusersType) => {
     return{
-        profile: state.profile
+        profile: state.profile,
+        posts: state.posts,
     }
 }
 
-export default connect( mapStateToProps, { getUserProfile } )(ProfileContainer)
+export default connect( mapStateToProps, { getUserProfile, getPostsOneUser } )(ProfileContainer)

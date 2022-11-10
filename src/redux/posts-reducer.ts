@@ -17,6 +17,13 @@ const initialState: IPostsState = {
 
 const postsReducer = (state = initialState, action: IPostAction) => {
     switch(action.type) {
+        case PostsAtionTypes.GET_POST_ONE_USER:
+            return {
+                ...state,
+                loading: false,
+                error: null, 
+                posts: action.posts
+            }
         case PostsAtionTypes.GET_ALL_POSTS:
             return {
                 loading: true, 
@@ -29,9 +36,8 @@ const postsReducer = (state = initialState, action: IPostAction) => {
                 error: null, 
                 posts: action.posts
             }
-        case PostsAtionTypes.GET_ALL_POSTS_ERROR:
+        case PostsAtionTypes.GET_POSTS_ERROR:
             return {
-                //...state,
                 loading: false,
                 error: action.error,
             }
@@ -39,7 +45,19 @@ const postsReducer = (state = initialState, action: IPostAction) => {
     }
 }
 
-
+export const getPostsOneUser = (userId?: string) => {
+    return async (dispatch: Dispatch<IPostAction>) => {
+        try {
+            const response =await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+            dispatch({type: PostsAtionTypes.GET_POST_ONE_USER, posts: response.data})
+        } catch (error) {
+            dispatch({
+                type: PostsAtionTypes.GET_POSTS_ERROR, 
+                error: "Произошла ошибка при загрузке пользователей"
+            })
+        }
+    }
+}
 
 export const getPosts = () => {
     return async (dispatch: Dispatch<IPostAction>) => {
@@ -49,7 +67,7 @@ export const getPosts = () => {
             dispatch({type: PostsAtionTypes.GET_ALL_POSTS_SUCCES, posts: response.data})
         } catch (error) {
             dispatch({
-                type: PostsAtionTypes.GET_ALL_POSTS_ERROR, 
+                type: PostsAtionTypes.GET_POSTS_ERROR, 
                 error: "Произошла ошибка при загрузке пользователей"
             })
         }
