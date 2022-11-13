@@ -1,4 +1,5 @@
 import styles from "./Post.module.scss";
+import CommentsContainer from './Comments/CommentsContainer';
 
 interface IPropsPost {
     key: number;
@@ -19,6 +20,7 @@ const Post: React.FC<IPropsPost> = (props) => {
        <h3>{props.post.title}</h3>
        <p>{props.post.body}</p>
        {!!props.username && <p className={styles.author}>Author: {props.username}</p>}
+       <CommentsContainer postId={props.post.id + ""} />
     </div>
     }
 
