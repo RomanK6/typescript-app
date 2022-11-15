@@ -4,7 +4,7 @@ import favicon from "../../logo.svg";
 import styles from "./Header.module.scss";
 
 
-const Header: React.FC = () => {
+const Header: React.FC = (props) => {
     return <div className={styles.header_wrapper}>
         <header>
             <div>

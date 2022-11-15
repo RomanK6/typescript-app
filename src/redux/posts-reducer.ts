@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { PostsAtionTypes, IPostsState, IPostAction } from "../types/post-types";
+import { PostsAtionTypes, IPostsState, IPostAction, IPosts } from "../types/post-types";
 
 const initialState: IPostsState = {
     posts: [
@@ -17,6 +17,11 @@ const initialState: IPostsState = {
 
 const postsReducer = (state = initialState, action: IPostAction) => {
     switch(action.type) {
+        case PostsAtionTypes.GET_MORE_POSTS:
+            return {
+                ...state, 
+                posts: action.posts
+            }
         case PostsAtionTypes.GET_POST_ONE_USER:
             return {
                 ...state,
@@ -65,6 +70,19 @@ export const getPosts = () => {
             dispatch({type: PostsAtionTypes.GET_ALL_POSTS})
             const response =await axios.get('https://jsonplaceholder.typicode.com/posts')
             dispatch({type: PostsAtionTypes.GET_ALL_POSTS_SUCCES, posts: response.data})
+        } catch (error) {
+            dispatch({
+                type: PostsAtionTypes.GET_POSTS_ERROR, 
+                error: "Произошла ошибка при загрузке пользователей"
+            })
+        }
+    }
+}
+
+export const getMorePosts = (posts: Array<IPosts>) => {
+    return async (dispatch: Dispatch<IPostAction>) => {
+        try {
+            dispatch({type: PostsAtionTypes.GET_MORE_POSTS, posts: [...posts, {userId: 10, id: 101, title: 'last post', body: 'last post body'}]})
         } catch (error) {
             dispatch({
                 type: PostsAtionTypes.GET_POSTS_ERROR, 

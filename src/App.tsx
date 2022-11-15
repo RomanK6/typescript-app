@@ -10,6 +10,7 @@ import Sidebar from './components/Sedebar/Sidebar';
 import PostsContainer from './components/Posts/PostsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import PostContainer from './components/Posts/Post/PostContainer';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
             <Route path='' element={<PostsContainer />} />
             <Route path='/posts' element={<PostsContainer />} />
             <Route path='/users' element={<UsersContainer />} />
-            <Route path='/profile/:userId' element={<ProfileContainer/>}/>
+            <Route path='/profile/:userId' element={<ProfileContainer />}/>
+            <Route path='/post/:id' element={<PostContainer />}/>
           </Routes>
         </div>
       </Provider>

@@ -2,25 +2,31 @@ import React, { useEffect } from "react";
 import {connect} from 'react-redux';
 import { redusersType } from "../../redux/store";
 import Posts from './Posts';
-import { getPosts } from './../../redux/posts-reducer';
+import { getPosts, getMorePosts } from './../../redux/posts-reducer';
 import { getAllUsers } from './../../redux/user-reduser';
+import { IPosts } from "../../types/post-types";
+
 
 //Типизация пропсов под connect
 interface IPostsPropsContainer {
     posts: redusersType;
     users: redusersType;
-    getPosts: () => {};
-    getAllUsers: () => {};
+    getPosts: () => void;
+    getAllUsers: () => void;
+    getMorePosts: (posts: Array<IPosts>) => void;
 }
 
 const PostsContainer: React.FC<IPostsPropsContainer> = (props) => {
+    
     useEffect(() => {
         props.getPosts()
         props.getAllUsers()
     }, [])
 
     return <div>
-        <Posts posts={props.posts.posts} users={props.users.users} />
+        <Posts posts={props.posts.posts} users={props.users.users} 
+        getMorePosts={props.getMorePosts}
+        />
     </div>
     }
 
@@ -31,4 +37,4 @@ const mapSteteToProps = (state: redusersType) => {
     }
 }
 
-export default connect(mapSteteToProps, { getPosts, getAllUsers })(PostsContainer);
+export default connect(mapSteteToProps, { getPosts, getAllUsers, getMorePosts })(PostsContainer);

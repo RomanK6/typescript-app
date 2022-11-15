@@ -3,6 +3,7 @@ export enum PostsAtionTypes {
     GET_ALL_POSTS_SUCCES = 'ts-react-app/posts/GET_ALL_POSTS_SUCCES',
     GET_POSTS_ERROR = 'ts-react-app/posts/GET_POSTS_ERROR',
     GET_POST_ONE_USER = 'ts-react-app/posts/GET_POST_ONE_USER',
+    GET_MORE_POSTS = 'ts-react-app/posts/GET_MORE_POSTS',
 }
 export interface IPosts {
     userId: number;

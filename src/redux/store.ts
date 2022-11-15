@@ -4,12 +4,14 @@ import commentsReducer from './comments-reducer';
 import postsReducer from './posts-reducer';
 import profileReducer from './profile-reduser';
 import usersReducer from './user-reduser';
+import { googleReducer } from './google-reducer';
 
 let reducers = combineReducers({
     posts: postsReducer,
     users: usersReducer,
     profile: profileReducer,
     comments: commentsReducer,
+    googleReducer,
 })
 //=====================
 export type redusersType = ReturnType<typeof reducers>
