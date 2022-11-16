@@ -3,12 +3,36 @@
     border-radius: 8px;
     color: #5ed9ff;
     padding: 20px 0;
-    display: flex;
-    flex-direction: column;
+    position: sticky;
+    top: 95px;
+    height: max-content;
 
-    .link {
-        color: #5ed9ff;
-        text-decoration: none;
-        margin: 5px 0;
+    ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        width: max-content;
+        margin: 0 auto;
+        
+        .link {
+            color: #5ed9ff;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+    }
+}
+@media (max-width: 600px) {
+    .wrapper {
+        position: fixed;
+        width: 100vw;
+        height: calc(100vh - 140px);
+        font-size: 32px;
+        opacity: .9;
+        left: -100vw;
+        transition: 0.5s;
+    }
+    .activeSideBar {
+        left: 0;
+        transition: 0.5s;
     }
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import {connect} from 'react-redux';
 import { redusersType } from "../../redux/store";
 import Users from './Users';
-import { getAllUsers } from './../../redux/user-reduser';
+import { getAllUsers } from '../../redux/user-reducer';
 
 //Типизация пропсов под connect
 interface IUsersPropsContainer {

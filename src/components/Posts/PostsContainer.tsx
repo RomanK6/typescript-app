@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import {connect} from 'react-redux';
 import { redusersType } from "../../redux/store";
 import Posts from './Posts';
-import { getPosts, getMorePosts } from './../../redux/posts-reducer';
-import { getAllUsers } from './../../redux/user-reduser';
+import { getPosts, getMorePosts } from '../../redux/posts-reducer';
+import { getAllUsers } from '../../redux/user-reducer';
 import { IPosts } from "../../types/post-types";
 
 

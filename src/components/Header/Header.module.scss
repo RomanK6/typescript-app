@@ -1,5 +1,7 @@
 .header_wrapper {
     grid-area: header;
+    position: sticky;
+    top: 0;
     
     header {
         display: flex;
@@ -14,6 +16,7 @@
         
         div {
             align-self: center;
+            display: flex;
             
             .NavLink {
                 text-transform: uppercase;
@@ -29,6 +32,74 @@
                 h2 {
                     margin-left: 8px;
                     color: #5ed9ff;
+                }
+            }
+            .burgerBtn {
+                display: none;
+            }
+            @media (max-width: 600px) {
+                .burgerBtn {
+                    display: block;
+                    cursor: pointer;
+                    position: relative;
+                    width: 30px;
+                    height: 20px;
+                    border-top: 3px solid #5ed9ff;
+                    border-bottom: 3px solid #5ed9ff;
+                    transition: border 0.3s;
+                    transition-delay: 0.2s;
+                }
+                
+                .burgerBtn::before{
+                    content: "";
+                    width: 30px;
+                    height: 3px;
+                    position: absolute;
+                    background-color: #5ed9ff;
+                    left: 0px;
+                    top: 40%;
+                    transition: 0.5s;
+                }
+                
+                .burgerBtn::after{
+                    content: "";
+                    width: 30px;
+                    height: 3px;
+                    position: absolute;
+                    background-color: #5ed9ff;
+                    left: 0px;
+                    top: 40%;
+                    transition: 0.5s;
+                }
+                
+                .active {
+                    border: none;
+                }
+                
+                .active:before {
+                    content: "";
+                    width: 30px;
+                    height: 3px;
+                    position: absolute;
+                    background-color: #5ed9ff;
+                    left: 0px;
+                    top: 40%;
+                    transform: rotate(45deg);
+                    transition: 0.5s;
+                    transition-delay: 0.1s;
+                }
+                
+                .active:after {
+                    content: "";
+                    width: 30px;
+                    height: 3px;
+                    position: absolute;
+                    background-color: #5ed9ff;
+                    left: 0px;
+                    top: 40%;
+                    transform: rotate(-45deg);
+                    transition: 0.5s;
+                    transition-delay: 0.1s;
                 }
             }
         }
